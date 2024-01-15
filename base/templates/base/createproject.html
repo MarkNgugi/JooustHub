@@ -1,0 +1,87 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #2d2d39;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    div {
+        background-color: #40404a;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        max-width: 400px; /* Set a maximum width for better mobile readability */
+        width: 100%; /* Make sure the div takes full width on smaller screens */
+    }
+
+    h2 {
+        color: #fff;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-bottom: 8px;
+        color: #fff;
+    }
+
+    input[type="text"],
+    textarea {
+        padding: 10px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+        border: 1px solid #555;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color: #2d2d39;
+        color: #fff;
+        width: 100%; /* Make the input fields take full width */
+    }
+
+    textarea {
+        height: 120px;
+        resize: vertical;
+        transition: height 0.2s;
+    }
+
+    button {
+        padding: 12px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    /* Media query for smaller screens */
+    @media screen and (max-width: 600px) {
+        div {
+            max-width: none; /* Remove the maximum width for smaller screens */
+        }
+    }
+</style>
+
+<div>
+    <h2>Create/Update project</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Save Project</button>
+    </form>
+</div>

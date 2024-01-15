@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #2d2d39;
+            display: flex;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        #content {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #2d2d39;
+            width: 75%; /* Adjust the width to cover three-quarters of the screen */
+            margin-left: auto; /* Center the content by pushing it to the right */
+            margin-right: auto;
+        }
+
+        h2 {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        textarea {
+            resize: vertical; /* Allow vertical resizing */
+            height: 2.0in; /* Initial height */
+            transition: height 0.2s; /* Smooth transition for height changes */
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            width: 50%;
+            border-radius: 5px;
+            margin-left: 25%; /* Center the button */
+        }
+    </style>
+
+    
+</head>
+<body>
+
+    <div id="content">
+
+        <h2>Edit Content</h2>
+        <hr>
+
+        <!-- Form to edit title and project_details -->
+        <form method="post" id="editForm" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save Changes</button>
+        </form>
+
+    </div>
+
+</body>
+</html>

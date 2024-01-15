@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1f1f1f; /* Deep Charcoal */
+            color: #ffffff; /* White text */
+        }
+
+        .container {
+            width: 75%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #3f4156; /* Rich Navy Blue */
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .content-box {
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #ebf5f5; /* White */
+            margin-bottom: 20px;
+            color: #000000; /* Black text */
+            position: relative; /* Added position relative */
+            max-height: 75vh; /* 75% of the viewport height */
+            overflow-y: auto; /* Add scrollbar for overflow */
+        }
+
+        /* Updated styles for the textarea */
+        #project_details {
+            width: 100%;
+            min-height: 100px; /* Set a minimum height */
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            resize: vertical; /* Allow vertical resizing */
+            overflow-y: hidden; /* Hide content overflow initially */
+        }
+    </style>
+    <title>Your Project Page</title>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="heading2">{{ project_details.heading }}</h2>
+    
+        <!-- Display area for added content -->
+        <div id="displayArea" class="content-box">
+            <p id="project_details" name="project_details" contenteditable="true" placeholder="Enter more info about the project...">{{ project_details.project_details }}</p>
+        </div>
+        
+        <span>Mastermind: *{{project_details.user.username}}*</span>
+        
+    </div>
+
+    <script>
+        // Adjust the height of the content box based on its content
+        document.getElementById('project_details').addEventListener('input', function() {
+            var contentBox = document.getElementById('displayArea');
+            var projectDetails = document.getElementById('project_details');
+
+            contentBox.style.height = 'auto';
+            contentBox.style.height = Math.min(projectDetails.scrollHeight, 0.75 * window.innerHeight) + 'px';
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+
+{% for project in projects %}
+{% if project.visibility == 'public' %}
+<div class="roomListRoom">
+    <div class="roomListRoom__header">
+        <a href="{% url 'hubprofile' project.user.id %}" class="roomListRoom__author">
+            <div class="avatar avatar--small">
+                <img src="{{project.user.avatar.url}}" />
+            </div>
+            <span>@{{project.user.username}}</span>
+        </a>
+        <div class="roomListRoom__actions">
+            <span>{{project.created_at|timesince}} ago</span>
+        </div>
+    </div>
+
+    <div class="roomListRoom__content">
+        <a href="{% url 'hubprojectpage' pk=project.pk %}">{{project.title}}</a>
+
+    </div>
+    
+    <div class="roomListRoom__meta">
+        <a href="" class="roomListRoom__joined">
+
+            <form method="post" action="{% url 'like_project' project.pk %}">
+                {% csrf_token %}
+                <button type="submit">
+                    {% if request.user in project.likes.all %}
+                        Unlike
+                    {% else %}
+                        Like
+                    {% endif %}
+                </button>
+            </form>
+            <p>{{ project.likes.count }} like(s)</p>
+        </a>
+        <p class="roomListRoom__topic">{{project.visibility}}</p>
+    </div>
+</div>
+{% endif%}
+{% endfor %}

@@ -1,0 +1,43 @@
+<div class="activities">
+    <div class="activities__header">
+        <h2>My Projects</h2>
+    </div>
+    {% for project in projects %}
+    {% if project.user == request.user%}
+    <div class="activities__box">
+        <div class="activities__boxHeader roomListRoom__header">
+            <a href="" class="roomListRoom__author">
+
+                <h1>
+                    <h1>Title: {{project.title}}</h1>
+                    <!-- <span>{{project.created_at|timesince}} ago</span> -->
+                  </h1>
+            </a>
+
+            
+            <div class="roomListRoom__actions">
+                <a href="{% url 'deleteProject' project.id %}">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                        <title>remove</title>
+                        <path
+                            d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+            
+
+        </div>
+
+          <div class="activities__boxContent">
+
+            <p>Status: {{project.visibility}}</p> <br>
+            <a class="btn--pill" href="{% url 'hubprojectpage' pk=project.pk %}">View Project</a>
+
+          </div>
+          
+    </div>
+    {% endif %}
+    {% endfor %}
+
+</div>
