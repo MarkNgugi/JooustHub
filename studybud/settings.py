@@ -86,19 +86,10 @@ WSGI_APPLICATION = 'studybud.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # },
-
-        'default': {
-        'ENGINE': 'mysql.connector.django',
-        'NAME': 'defaultdb', 
-        'USER': 'avnadmin',
-        'PASSWORD': 'AVNS_GvNYBhkojImOwGBjoZv',
-        'HOST': 'mysql-1775cdcc-joousthub-db.a.aivencloud.com',
-        'PORT': '25666',
-    }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
 }
 
 
